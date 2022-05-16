@@ -27,6 +27,6 @@
 <h2>Usage</h2>
 <ul>
 <li><b>To login:</b> Go to link: https://try-face-rec-login.herokuapp.com/</li>
-<li><b>To register:</b> Go to link: https://try-face-rec-login.herokuapp.com//register</li>
+<li><b>To register:</b> Go to link: https://try-face-rec-login.herokuapp.com/register</li>
 </ul>
 Please not: <i>I have not used data validation on email so if you want you can add it in your program. Otherwise please enter email with caution.</i>
