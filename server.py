@@ -26,22 +26,39 @@ class LoginForm(FlaskForm):
 email = None
 url = None
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def homepage():
     return render_template('homepage.html')
 
 @app.route('/login', methods=['GET', 'POST'])
-def index():
+def login_page():
     global email, url
     form = LoginForm()
     if form.validate_on_submit():
         email = form.email.data
         url = form.url.data
-        return redirect(url_for('.login_start'))
+        return redirect(url_for('.login_submit'))
     elif request.method == 'POST':
         form.email.data = email
         form.url.data = url
     return render_template('index.html', form=form)
+
+@app.route('/login_submit')
+def login_submit():
+    global email, url
+    if email == '' or url == '':
+        return redirect(url_for('.index'))
+    if email == None or url == None:
+        return redirect(url_for('.login_submit'))
+    status = lc(email, url)
+    if status == "Image not clear! Please try again!" or status == "Data does not exist!":
+        return render_template('fail.html', msg=status)
+    if status == "Successfully Logged in!":
+        app.logger.info("Login Success")
+        return render_template('success.html', msg=status)
+    else:
+        app.logger.info("Login Fail")
+        return render_template('fail.html', msg=status)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -55,25 +72,6 @@ def register():
         form.email.data = email
         form.url.data = url
     return render_template('register.html', form=form)
-
-@app.route('/login_submit')
-def login():
-    global email, url
-    if email == '' or url == '':
-        return redirect(url_for('.index'))
-    if email == None or url == None:
-        return redirect(url_for('.login'))
-    status = lc(email, url)
-    if status == "Image not clear! Please try again!":
-        return render_template('fail.html', msg=status)
-    if status == "Data does not exist!":
-        return render_template('fail.html', msg=status)
-    if status == "Successfully Logged in!":
-        app.logger.info("Login Success")
-        return render_template('success.html', msg=status)
-    else:
-        app.logger.info("Login Fail")
-        return render_template('fail.html', msg=status)
 
 @app.route('/register_submit')
 def register_submit():
