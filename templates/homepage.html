@@ -113,12 +113,12 @@
             </div>
             <div class="my-3">
               <p class="starting-text">Already have an account?</p>
-              <button onclick="goToLoginPage()">Log In</button>
+              <a href=login ><button>Log In</button></a>
             </div>
             <h4>OR</h4>
             <div class="mt-3">
               <p class="starting-text">Not a member yet?</p>
-              <button onclick="goToRegisterPage()">Register</button>
+              <a href=register ><button>Register</button></a>
             </div>
           </div>
         </div>
@@ -127,12 +127,6 @@
     <script>
       window.onload = function () {
         document.body.className += " loaded";
-      };
-      const goToLoginPage = () => {
-        window.location.href = "index.html";
-      };
-      const goToRegisterPage = () => {
-        window.location.href = "register.html";
       };
     </script>
   </body>

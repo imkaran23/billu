@@ -27,13 +27,17 @@ email = None
 url = None
 
 @app.route('/', methods=['GET', 'POST'])
+def homepage():
+    return render_template('homepage.html')
+
+@app.route('/login', methods=['GET', 'POST'])
 def index():
     global email, url
     form = LoginForm()
     if form.validate_on_submit():
         email = form.email.data
         url = form.url.data
-        return redirect(url_for('.login'))
+        return redirect(url_for('.login_start'))
     elif request.method == 'POST':
         form.email.data = email
         form.url.data = url
@@ -52,7 +56,7 @@ def register():
         form.url.data = url
     return render_template('register.html', form=form)
 
-@app.route('/login')
+@app.route('/login_submit')
 def login():
     global email, url
     if email == '' or url == '':
