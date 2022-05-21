@@ -23,15 +23,20 @@ class LoginForm(FlaskForm):
     url = StringField('DataURL', validators=[])
     submit = SubmitField('LOGIN')
 
+class RegisterForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired()])
+    url = StringField('DataURL', validators=[])
+    submit = SubmitField('REGISTER')
+
 email = None
 url = None
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def homepage():
     return render_template('homepage.html')
 
 @app.route('/login', methods=['GET', 'POST'])
-def login_page():
+def login():
     global email, url
     form = LoginForm()
     if form.validate_on_submit():
@@ -44,13 +49,15 @@ def login_page():
     return render_template('index.html', form=form)
 
 @app.route('/login_submit')
-def login_submit():
+def login_submit():  
     global email, url
     if email == '' or url == '':
-        return redirect(url_for('.index'))
+        return redirect(url_for('.login'))
     if email == None or url == None:
-        return redirect(url_for('.login_submit'))
+        return redirect(url_for('.login'))
+
     status = lc(email, url)
+
     if status == "Image not clear! Please try again!" or status == "Data does not exist!":
         return render_template('fail.html', msg=status)
     if status == "Successfully Logged in!":
@@ -63,7 +70,7 @@ def login_submit():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     global email, url
-    form = LoginForm()
+    form = RegisterForm()
     if form.validate_on_submit():
         email = form.email.data
         url = form.url.data

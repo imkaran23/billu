@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/static/style.css">
     <title>Login</title>
 </head>
-<body>
+<body>    
    <h1>Video Login</h1>
    <form method="POST" accept-charset="utf-8" autocomplete="off">
       <div id="container">
@@ -22,7 +22,7 @@
       {{ form.url.label }} {{ form.url() }} {% for error in form.url.errors %}{{ error }}{% endfor %}<br>
       {{ form.submit() }}
    </form>
-   <canvas id="myCanvas" width="720" height="360" hidden></canvas>
+   <canvas id="myCanvas" width="320" height="240" hidden></canvas>
    <script type="text/javascript", src="/static/js/main.js"></script>
   </body>
 </html>

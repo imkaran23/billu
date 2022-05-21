@@ -12,9 +12,8 @@ urlInput.setAttribute("accept", "image/png");
 labels[1].hidden = "hidden";
 emailInput.setAttribute("placeholder", "Email");
 urlInput.setAttribute("placeholder", "URL");
-urlInput.hidden = "hidden";
 
-
+urlInput.hidden = "hidden"
 var localMediaStream = null;
 var constraints = {
     video: {
@@ -23,7 +22,6 @@ var constraints = {
     },
     audio: false
 };
-
 
 navigator.mediaDevices.getUserMedia(constraints)
     .then(function(stream) {
@@ -34,9 +32,8 @@ navigator.mediaDevices.getUserMedia(constraints)
         console.log(error);
     });
 
-
 function login() {
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     var dataURL = canvas.toDataURL('image/png');
     document.getElementById("url").value = dataURL;
-}
+}  

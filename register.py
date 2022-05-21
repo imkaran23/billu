@@ -1,9 +1,13 @@
 from base64 import b64decode
 import os
-import pickle
+import pickle  
 
 def register_on_submit(email, image):
     header, encoded = image.split(",", 1)
+
+    with open("Registering.png", "wb") as f:
+        f.write(b64decode(encoded))
+    
     try:
         try:
             data = pickle.loads(open("data.pickle", "rb").read())
@@ -12,6 +16,7 @@ def register_on_submit(email, image):
             data = dict()
             with open("data.pickle", "wb") as f:
                 f.write(pickle.dumps(data))
+        
         data = pickle.loads(open("data.pickle", "rb").read())
         data[email] = encoded
         with open("data.pickle", "wb") as f:
