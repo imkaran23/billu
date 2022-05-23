@@ -28,4 +28,4 @@
 <ul>
 <li><b>Homepage:</b> Go to link: https://try-face-rec-login.herokuapp.com/</li>  
 </ul>
-Please not: <i>I have not used data validation on email so if you want you can add it in your program. Otherwise please enter email with caution.</i>
+Please note: <i>I have not used data validation on email so if you want you can add it in your program. Otherwise please enter email with caution.</i>
