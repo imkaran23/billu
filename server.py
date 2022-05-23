@@ -58,9 +58,9 @@ def login_submit():
 
     status = lc(email, url)
 
-    if status == "Image not clear! Please try again!" or status == "Data does not exist!":
+    if status == "Image not clear! Please try again!" or status == "Data does not exist!" or status == "This email is not registered yet":
         return render_template('fail.html', msg=status)
-    if status == "Successfully Logged in!":
+    elif status == "Successfully Logged in!":
         app.logger.info("Login Success")
         return render_template('success.html', msg=status)
     else:
@@ -87,8 +87,12 @@ def register_submit():
         return redirect(url_for('.register'))
     if email == None or url == None:
         return redirect(url_for('.register_submit'))
+
     status = rs(email, url)
-    if status == "Registration Successful!":
+
+    if status == "Email id already registered":
+       return render_template('fail.html', msg=status)
+    elif status == "Registration Successful!":
         app.logger.info("Registration Success")
         return render_template('success.html', msg=status)
     else:

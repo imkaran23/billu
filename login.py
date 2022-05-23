@@ -13,6 +13,9 @@ def login_check(email, image):
 
     data = pickle.loads(open("data.pickle", "rb").read())
 
+    if email not in data.keys():
+        return "This email is not registered yet"
+
     with open("Existing.png", "wb") as f:
         f.write(b64decode(data[email]))
     

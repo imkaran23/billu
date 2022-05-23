@@ -18,6 +18,8 @@ def register_on_submit(email, image):
                 f.write(pickle.dumps(data))
         
         data = pickle.loads(open("data.pickle", "rb").read())
+        if email in data.keys():
+            return "Email id already registered"
         data[email] = encoded
         with open("data.pickle", "wb") as f:
             f.write(pickle.dumps(data))

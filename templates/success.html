@@ -34,11 +34,27 @@
             margin: auto;
             align-items: center;
         }
+        button {
+            background-color: #008CBA;
+            border-radius: 5px;
+            color: white;
+            padding: 7px 25px;
+            text-align: center;
+            border: none;
+            transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+        }
+        button:hover {
+            background-color: #4CAF50;
+            transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+        }
     </style>
     <body>
         <div class="card">
             <div class="icon"></div>
-            <h1>{{ msg }}</h1> 
+            <h1>{{ msg }}</h1><br>
+            <a href=login ><button style="margin:15px;">Log In</button></a>
+            <a href=register ><button style="margin:8px;">Register</button></a>
+            <a href={{ url_for('homepage') }} ><button style="margin:15px;">Homepage</button></a>
         </div>
     </body>
 </html>
