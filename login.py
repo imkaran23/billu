@@ -27,13 +27,17 @@ def login_check(email, image):
             # print(e.__cause__)
             return "Data does not exist !"
 
+        face_locations = fr.face_locations(got_image)
+        if(len(face_locations)==0):
+            return "No face detected"
+
         got_image_facialfeatures = fr.face_encodings(got_image)[0]
         existing_image_facialfeatures = fr.face_encodings(existing_image)[0]
         results = fr.compare_faces([existing_image_facialfeatures], got_image_facialfeatures)
         if(results[0]):
             return "Successfully Logged in"
         else:
-            return "Failed to Log in !"
+            return "User ID and face doesn't match!"
     except Exception as e:
-        print(e.__cause__)
+        # print(e.__cause__)
         return "Image not clear ! Please try again !"
