@@ -17,7 +17,7 @@ urlInput.hidden = "hidden"
 var localMediaStream = null;
 var constraints = {
     video: {
-        width: { max: 960 },
+        width: { max: 1280 },
         height: { max: 720 }
     },
     audio: false

@@ -24,6 +24,21 @@
       crossorigin="anonymous"
     ></script>
     <link rel="stylesheet" href="/static/style.css" />
+    <style>
+      button {
+        background-color: #00bfff;
+        border-radius: 5px;
+        color: white;
+        padding: 10px 170px;
+        text-align: center;
+        border: none;
+        transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+      }
+      button:hover {
+        background-color: #39ff14;
+        transition: all 0.2s cubic-bezier(0.42, 0, 0.58, 1);
+      }
+    </style>
     <title>User login</title>
   </head>
   <body>
@@ -40,7 +55,8 @@
         %}{{ error }}{% endfor %}<br />
         {{ form.submit() }}
       </form>
-      <canvas id="myCanvas" width="320" height="240" hidden></canvas>
+      <a href="register"><button style="margin: 15px">Register</button></a>
+      <canvas id="myCanvas" width="1280" height="720" hidden></canvas>
     </div>
     <script type="text/javascript" , src="/static/js/main.js"></script>
   </body>
