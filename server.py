@@ -19,12 +19,12 @@ app.config['SECRET_KEY'] = secret_key
 app.register_blueprint(main)
 
 class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
+    email = StringField('Enter user ID', validators=[DataRequired()])
     url = StringField('DataURL', validators=[])
     submit = SubmitField('LOGIN')
 
 class RegisterForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired()])
+    email = StringField('Enter user ID', validators=[DataRequired()])
     url = StringField('DataURL', validators=[])
     submit = SubmitField('REGISTER')
 
