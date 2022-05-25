@@ -58,7 +58,7 @@ def login_submit():
 
     status = lc(email, url)
 
-    if status == "Image not clear ! Please try again !" or status == "Data does not exist !" or status == "This user ID is not registered yet" or status == "No face detected":
+    if status == "Image not clear ! Please try again !" or status == "Data does not exist !" or status == "This user ID is not registered yet" or status == "No face detected" or status == "Multiple faces detected":
         return render_template('fail.html', msg=status)
     elif status == "Successfully Logged in":
         app.logger.info("Login Success")
@@ -90,7 +90,7 @@ def register_submit():
 
     status = rs(email, url)
 
-    if status == "This user ID is already registered" or status == "No face detected":
+    if status == "This user ID is already registered" or status == "No face detected" or status == "Multiple faces detected":
        return render_template('fail.html', msg=status)
     elif status == "Registration Successful":
         app.logger.info("Registration Success")

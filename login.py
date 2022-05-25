@@ -30,7 +30,9 @@ def login_check(email, image):
         face_locations = fr.face_locations(got_image)
         if(len(face_locations)==0):
             return "No face detected"
-
+        if(len(face_locations)>1):
+            return "Multiple faces detected"
+            
         got_image_facialfeatures = fr.face_encodings(got_image)[0]
         existing_image_facialfeatures = fr.face_encodings(existing_image)[0]
         results = fr.compare_faces([existing_image_facialfeatures], got_image_facialfeatures)

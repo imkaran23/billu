@@ -28,6 +28,8 @@ def register_on_submit(email, image):
         face_locations = fr.face_locations(got_image)
         if(len(face_locations)==0):
             return "No face detected"
+        if(len(face_locations)>1):
+            return "Multiple faces detected"
 
         data[email] = encoded
         with open("data.pickle", "wb") as f:
